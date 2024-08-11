@@ -1,7 +1,6 @@
 import smtplib
 import json
 import requests
-import schedule
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
@@ -71,8 +70,7 @@ def job():
 
 if __name__ == "__main__":
 
-    schedule.every(2).hours.do(job)
-
     while True:
-        schedule.run_pending()
-        time.sleep(1)
+        job()
+        # check it per 30 minutes
+        time.sleep(1800)
